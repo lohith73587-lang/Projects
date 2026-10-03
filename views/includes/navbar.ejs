@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold" href="/listings">
+            <i class="fa-solid fa-bed text-danger"></i>TravelCo
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">EXPLORE</a>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+
+                <a class="nav-link m-2" href="/listings/new">
+                    ADD NEW TRAVELCO
+                </a>
+
+                <% if(!locals.curruser) { %>
+
+                    <a class="nav-link m-2" href="/">
+                        SIGN UP
+                    </a>
+
+                    <a class="nav-link m-2" href="/login">
+                        LOG IN
+                    </a>
+
+                <% } else { %>
+
+                    <a class="nav-link m-2" href="/logout">
+                        LOG OUT
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </div>
+    </div>
+</nav>

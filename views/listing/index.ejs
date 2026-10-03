@@ -1,0 +1,55 @@
+<% layout("/layout/boilerplate") %>
+<div class="d-flex align-items-center">
+    <h1 class="mb-4">All Listings</h1>
+
+    <div class="form-check form-switch ms-auto mb-4 border rounded-pill px-3 py-2 align-items-center gap-2">
+        <input class="form-check-input mt-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label mb-0" for="flexSwitchCheckDefault"> &nbsp;Display price with taxes
+        </label>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <% for (let li of lists) { %>
+        <div class="col">
+                  <a href="/listings/<%= li._id %>">
+            <div class="card listcard h-100">
+                <img src="<%= li.image.url %>"class="card-img-top" alt="Travelco Image" style="height: 20rem;" >
+                <div class="card-img-overlay"> </div>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/listings/<%= li._id %>"><%= li.title %><br>
+<h6>
+    &#8377;
+    <span class="listing-price" data-price="<%=li.price%>">
+        <%=li.price.toLocaleString("en-IN")%>
+    </span>
+    /per night
+</h6></a></h5>
+                    <p class="card-text"><%= li.location %>, <%= li.country %>
+                    </p>
+                </div>
+            </div>
+     </a>   
+    </div>
+    <% } %>
+</div>
+
+<br>
+<br>
+
+<script>
+    const toggle=document.getElementById("flexSwitchCheckDefault");
+    const prices=document.querySelectorAll(".listing-price");
+    toggle.addEventListener("change",function(){
+        for(let price of prices){
+            let ogprice=Number(price.dataset.price)
+            if(this.checked){
+                let taxPrice=ogprice*1.18;  
+                price.innerText=Math.round(taxPrice).toLocaleString("en-IN");
+        }else{
+            price.innerText=ogprice.toLocaleString("en-IN");
+        }
+  }  });
+
+
+
+</script>

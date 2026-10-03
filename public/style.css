@@ -1,0 +1,129 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;   
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+.navbar{
+    background-color: white;
+    height: 5rem;
+
+}
+
+.nav-link{
+    color: black !important;
+    display: inline-block !important;
+}
+
+.f-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+}
+
+.f-social,.f-links{
+    width: 100%;
+}
+
+.f-links a{
+    text-align: center;
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-links a:hover{
+    text-decoration: underline;
+}
+
+.f-social i {
+    margin: left 4px; 
+    margin-right: 4px;
+}
+
+/*cards*/
+.listcard{
+    border: 2px solid transparent !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 0.5rem !important;
+    border-radius: 1.5rem !important;
+    transition: border 0.2s ease !important;
+}
+
+.card-img-top{
+    height: 20rem !important;
+    border-radius: 1.5rem !important;
+    width: 100% !important;
+    object-fit:cover !important;
+
+}
+
+.card-body{
+    padding: 0% !important;
+}
+
+.card-body h5 a,p{
+    text-decoration: none !important;
+    color: #222222 !important;
+    transition: text-decoration 0.2s ease;
+}
+
+.card-body h5 a:hover{
+    text-decoration:underline !important;
+  
+}
+
+.listcard:hover{
+      border: 2px solid rgba(0, 0, 0, 0.3) !important;
+      background-color: #ebebeb;
+} 
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+.btn-col{
+    background-color: #fe424d !important;
+}
+
+
+.show-img {
+    height: 390px !important;
+    object-fit: cover !important;
+    margin-top: 5px;
+}
+
+.show-card{
+    border: none !important;
+}   
+
+.star-rating{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    margin: 10px 0 25px;
+    font-size: 15px;
+    color: goldenrod !important;
+}
+
+#map{
+    height: 400px;
+    width: 80vh;
+}
+
+.form-switch .form-check-input{
+    margin-left:0 !important;
+}

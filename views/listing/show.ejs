@@ -1,0 +1,140 @@
+<% layout("/layout/boilerplate") %>
+
+<script>
+    let maptoken="<%=process.env.MAP_TOKEN%>";
+
+    let coordinates=<%- JSON.stringify(li.geometry.coordinates) %>;
+
+    
+     console.log("COORDINATES:",coordinates);
+    console.log("TYPE:",typeof coordinates);
+    console.log("IS ARRAY:",Array.isArray(coordinates));
+</script>
+<div class="row mt-3">
+
+<div class="col-8 offset-3">
+
+    <h3><b><%= li.title %></b></h3>
+
+</div>
+
+<div class="card show-card col-6 offset-3">
+
+    <img
+        src="<%= li.image.url %>"
+        class="card-img-top show-img"
+        alt="listing_image"
+    >
+
+    <div class="card-body h"><br>
+        <p><i>Owned by <%=li.owner.username%></i></p>
+      <b>  <p class="card-text">
+
+            <h5>
+            <%= li.description %></h5>
+            <br>
+
+            &#8377;<%= li.price.toLocaleString("en-IN") %>
+            <br>
+
+            <%= li.location %>
+            <br>
+
+            <%= li.country %>
+
+        </p></b>
+
+    </div>
+
+</div>
+<%if(curruser && curruser._id.equals(li.owner._id)) {%>
+<br>
+
+<div class="col-8 offset-3 mt-3">
+
+    <form
+        action="/listings/<%= li._id %>/edit"
+        method="get"
+        style="display: inline;"
+    >
+        <button class="btn btn-col">
+            Edit
+        </button>
+    </form>
+
+    <form
+        action="/listings/DELETE/<%= li._id %>?_method=DELETE"
+        method="post"
+        style="display: inline;"
+    >
+        <button class="btn btn-dark">
+            Delete
+        </button>
+    </form>
+<br>
+<br>
+<%}%>
+</div>
+
+<hr>
+<%if(curruser) {%>
+<div class="col col-6 offset-3 mb-3">
+    <H3>Leave a Review</H3>
+    <form action="/listings/<%=li.id%>/review" method="post" class="needs-validation">
+        <div class="mb-3 mt-3">
+            <label for="rating" class="form-label">Rating</label><br>
+            <div class="star-rating">
+            <span style="font-size:300%;color:gold;">★</span>
+            <span style="font-size:300%;color:gold;">★</span>
+            <span style="font-size:300%;color:gold;">★</span>
+            <span style="font-size:300%;color:gold;">★</span>  
+            <span style="font-size:300%;color:gold;">★</span>
+            </div>
+            <input type="range"  class="form-range" min="1"  max="5"  name="review[rating]" id="rating">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="comment" class="form-label">Comments</label>
+            <textarea name="review[comment]" class="form-control" id="comment" rows="10" cols="30" placeholder="LEAVE US YOUR COMMENTS" required></textarea>
+        </div>
+        <button class="btn btn-outline-dark">SUBMIT</button>
+    </form>
+</div>
+<hr>
+<%}%>
+<%if (li.reviews.length > 0){%>
+<div class="row">
+    <div class="col-10 offset-1">
+        <h4>ALL REVIEWS</h4>
+        <div class="row">
+            <% for(let R of li.reviews) { %>
+                <div class="col-6 mb-3">
+                    <div class="card mb-2 mt-2">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <b>@<%=R.author.username%></b>
+                            </h5>
+                            <p class="card-text" style="font-size:medium; font-weight:200;">
+                                <%= R.comment %>
+                                <br><% for(let i=0; i<R.rating; i++) { %><span style="font-size:300%; color:gold;">★</span>
+                                <% } %>
+                            </p>
+                            <% if (curruser && R.author && R.author._id.equals(curruser._id)) { %>
+                            <form action="/listings/<%=li.id%>/review/<%=R.id%>?_method=DELETE"method="post">
+                                <button class=" btn btn-dark" style="margin: 3px;">Delete</button>
+                            </form>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<hr>
+<%}%>
+
+<div class=" col-6 offset-3 mb-3">
+    <h2>Where you'll be</h2>
+    <div id="map"></div>
+</div></div>
+<script src="/js/map.js"></script>

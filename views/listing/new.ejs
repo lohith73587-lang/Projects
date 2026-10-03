@@ -1,0 +1,40 @@
+<% layout("/layout/boilerplate")%>
+<div class="row"> 
+    <div class= "col-8 offset-2"></div>
+    <h2>CREATE A NEW LISTING</h2>
+    <form action="/listings" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div>
+        <label for="title" class="form-label">Title</label>
+        <input name="listing[title]"  placeholder="ENTER TITLE" type="text" class="form-control" required>
+        <div class="valid-feedback"><h6>Valid title</h6></div><br>
+        </div>
+        <div>
+              <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" id="" placeholder="ENTER DESCRIPTION" class="form-control" required></textarea>
+        <div class="invalid-feedback"> <h6>Description is a Mandatory field</h6></div><br>
+        </div>
+        <div>
+             <label for="image" class="form-label">Choose Image</label>
+        <input type="file" name="listing[image][url]" placeholder="UPLOAD IMAGE" class="form-control" required><br><br>
+        </div>
+        <div class="row">
+                <div class="col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]"  placeholder="ENTER PRICE" type="number" class="form-control" required>
+                <div class="invalid-feedback"><h6>Enter a Valid Price Value</h6></div><br>
+                </div>
+                <div class="col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input name="listing[country]"  placeholder="ENTER COUNTRY" type="text" class="form-control" required><br><br>
+                </div>
+            </div>
+        <div>
+             <label for="location" class="form-label">Location</label>
+        <input name="listing[location]"  placeholder="ENTER LOCATION" type="text" class="form-control" required><br><br>
+        </div>
+        <button class="btn btn-col">ADD</button>
+        <br>
+        <br>
+    </form>
+<br>
+</div>

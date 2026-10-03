@@ -1,0 +1,41 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="row">
+    <h2 class="col-6 offset-3">SIGNUP on TravelCo</h2>
+    <div class="col-6 offset-3">
+        <form action="/signup" method="post" novalidate class="needs-validation">
+            <div class="mb-3">
+            <label for="Username" class="form-label">Username</label>
+            <input
+               required
+                name="Username"
+                type="text"
+                class="form-control"
+            >
+        </div>
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input
+               required
+                name="Email"
+                type="email"
+                class="form-control"
+            >
+        </div>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input
+               required
+                name="Password"
+                type="password"
+                class="form-control"
+            >
+            <div class="valid-feedback"><h6>GOOD TO GO</h6></div><br>
+        </div>  
+          
+          <button class="btn btn-success">SignUp</button>
+        </form>
+        <br>
+        <a href="/login" class="btn btn-primary">Already registered? Login!</a>
+    </div>
+</div>

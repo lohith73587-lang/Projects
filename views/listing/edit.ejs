@@ -1,0 +1,97 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="row">
+    <div class="col-8 offset-3">
+
+    <h2>EDIT LISTING DETAILS</h2>
+
+    <form action="/listings/edit/<%= li._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="title" class="form-label">EDIT TITLE</label>
+            <input
+               required
+                name="listing[title]"
+                value="<%= li.title %>"
+                type="text"
+                class="form-control"
+            >
+            <div class="invalid-feedback"><h6>Title cannot be empty</h6></div><br>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">
+                EDIT DESCRIPTION
+            </label>
+
+            <textarea
+            required
+                name="listing[description]"
+                class="form-control"
+            ><%= li.description %></textarea>
+            <div class="invalid-feedback"><h6>Please Add Description</h6></div><br>
+        </div>
+        <div class="mb-3">
+            <b>Current display image </b><br>
+            <img src="<%=OGimageurl%>" class="img-fluid" style="width:300px;height:250px;object-fit:cover;">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label" >EDIT IMAGE</label>
+            <input
+                name="listing[image][url]"
+                value="<%= li.image.url %>"
+                type="file"
+                class="form-control"
+            >
+            <div class="invalid-feedback"><h6>UPLOAD NEW IMAGE</h6></div><br>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <label for="price" class="form-label">EDIT PRICE</label>
+
+                <input
+                    name="listing[price]"
+                    value="<%= li.price %>"
+                    type="text"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+            <div class="col-md-8">
+                <label for="country" class="form-label">EDIT COUNTRY</label>
+
+                <input
+                    name="listing[country]"
+                    value="<%= li.country %>"
+                    type="text"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">
+                EDIT LOCATION
+            </label>
+
+            <input
+                name="listing[location]"
+                value="<%= li.location %>"
+                type="text"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <button class="btn btn-col">EDIT</button>
+
+    </form>
+
+</div>
+
+</div>
